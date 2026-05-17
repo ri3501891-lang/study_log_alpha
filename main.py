@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+from datetime import date
 
 LOG_FILE = Path("logs.json")
 
@@ -28,14 +29,18 @@ def get_next_id(logs):
 
 def add_log():
     logs = load_logs()
+    today = date.today().isoformat()
 
-    date = input("日付を入力してください (例: 2026-05-17): ").strip()
+    print(f"今日の日付: {today}")
+    date_input = input("日付を入力してください（Enterで今日の日付を使用）: ").strip()
+    log_date = date_input if date_input else today
+
     subject = input("教科を入力してください: ").strip()
     study_time = input("勉強時間を入力してください（分）: ").strip()
     memo = input("メモを入力してください: ").strip()
 
-    if not date or not subject or not study_time:
-        print("日付・教科・勉強時間は必須です。")
+    if not subject or not study_time:
+        print("教科・勉強時間は必須です。")
         return
 
     if not study_time.isdigit():
@@ -44,7 +49,7 @@ def add_log():
 
     new_log = {
         "id": get_next_id(logs),
-        "date": date,
+        "date": log_date,
         "subject": subject,
         "study_time": int(study_time),
         "memo": memo,
@@ -109,6 +114,46 @@ def show_total_time_by_subject():
         print(f"{subject}: {total}分")
 
 
+def show_total_time_by_day():
+    logs = load_logs()
+    if not logs:
+        print("学習記録がありません。")
+        return
+
+    totals = {}
+    for log in logs:
+        log_date = log["date"]
+        totals[log_date] = totals.get(log_date, 0) + log["study_time"]
+
+    print("\n--- 毎日の総勉強時間 ---")
+    for log_date, total in sorted(totals.items()):
+        print(f"{log_date}: {total}分")
+
+
+def evaluate_today_study():
+    logs = load_logs()
+    if not logs:
+        print("学習記録がありません。")
+        return
+
+    today = date.today().isoformat()
+    total_today = 0
+
+    for log in logs:
+        if log["date"] == today:
+            total_today += log["study_time"]
+
+    print(f"\n--- 今日の勉強時間評価 ({today}) ---")
+    print(f"今日の総勉強時間: {total_today}分")
+
+    if total_today == 0:
+        print("今日はまだ勉強記録がありません。")
+    elif total_today <= 60:
+        print("もう少し勉強しましょう。")
+    else:
+        print("よくできました！")
+
+
 def main():
     while True:
         print("\n=== 学習ログアプリ ===")
@@ -116,9 +161,11 @@ def main():
         print("2. 学習記録を一覧表示")
         print("3. 学習記録を削除")
         print("4. 教科ごとの総勉強時間を表示")
-        print("5. 終了")
+        print("5. 毎日の総勉強時間を表示")
+        print("6. 今日の勉強時間の評価を表示")
+        print("7. 終了")
 
-        choice = input("メニューを選んでください (1-5): ").strip()
+        choice = input("メニューを選んでください (1-7): ").strip()
 
         if choice == "1":
             add_log()
@@ -129,10 +176,14 @@ def main():
         elif choice == "4":
             show_total_time_by_subject()
         elif choice == "5":
+            show_total_time_by_day()
+        elif choice == "6":
+            evaluate_today_study()
+        elif choice == "7":
             print("アプリを終了します。")
             break
         else:
-            print("1〜5の数字を入力してください。")
+            print("1〜7の数字を入力してください。")
 
 
 if __name__ == "__main__":
