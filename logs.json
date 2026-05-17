@@ -1,0 +1,93 @@
+[
+  {
+    "id": 1,
+    "date": "2026-05-17",
+    "subject": "Java",
+    "study_time": 50,
+    "memo": "もう一回同じところ復習"
+  },
+  {
+    "id": 2,
+    "date": "2026-05-17",
+    "subject": "SQL",
+    "study_time": 60,
+    "memo": "not existsの全称量化を理解した"
+  },
+  {
+    "id": 3,
+    "date": "2026-05-17",
+    "subject": "python",
+    "study_time": 30,
+    "memo": "モジュールが難しかった"
+  },
+  {
+    "id": 4,
+    "date": "2026-05-17",
+    "subject": "SQL",
+    "study_time": 70,
+    "memo": "ウィンドウ関数理解できた"
+  },
+  {
+    "id": 5,
+    "date": "2026-05-17",
+    "subject": "Java",
+    "study_time": 45,
+    "memo": "次に勉強するのは明後日"
+  },
+  {
+    "id": 6,
+    "date": "2026-05-17",
+    "subject": "python",
+    "study_time": 75,
+    "memo": "リストを理解した"
+  },
+  {
+    "id": 7,
+    "date": "2026-05-17",
+    "subject": "Python",
+    "study_time": 90,
+    "memo": "モジュールを理解した"
+  },
+  {
+    "id": 8,
+    "date": "2026-05-17",
+    "subject": "SQL",
+    "study_time": 85,
+    "memo": "トランザクションを理解した"
+  },
+  {
+    "id": 9,
+    "date": "2026-05-17",
+    "subject": "C",
+    "study_time": 75,
+    "memo": "ポインタの概念を理解するのが難しかった"
+  },
+  {
+    "id": 10,
+    "date": "2026-05-17",
+    "subject": "Python",
+    "study_time": 80,
+    "memo": "クラスの概念を理解した"
+  },
+  {
+    "id": 11,
+    "date": "2026-05-17",
+    "subject": "SQL",
+    "study_time": 50,
+    "memo": "not existの全称量化を理解した"
+  },
+  {
+    "id": 12,
+    "date": "2026-05-17",
+    "subject": "C",
+    "study_time": 100,
+    "memo": "カレンダーをコードで表示できた"
+  },
+  {
+    "id": 13,
+    "date": "2026-05-17",
+    "subject": "Python",
+    "study_time": 75,
+    "memo": "インスタンスの意味を理解した"
+  }
+]
