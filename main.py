@@ -68,7 +68,7 @@ def show_logs():
 
     print("\n--- 学習記録一覧 ---")
     for log in logs:
-        print(
+        print(xx
             f"ID: {log['id']} | 日付: {log['date']} | 教科: {log['subject']} | "
             f"勉強時間: {log['study_time']}分 | メモ: {log['memo']}"
         )
